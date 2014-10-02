@@ -80,7 +80,8 @@ module Sprockets
       headers = { 'Location'      => url.to_s,
                   'Content-Type'  => Rack::Mime.mime_type(::File.extname(digest_path)),
                   'Pragma'        => 'no-cache',
-                  'Cache-Control' => 'no-cache; max-age=0' }
+                  'Cache-Control' => 'must-revalidate, private, max-age=0' }
+
       [self.class.redirect_status, headers, [redirect_message(url.to_s)]]
     end
 
